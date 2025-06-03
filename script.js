@@ -1,5 +1,6 @@
 class Produto {
-    constructor(nome, quantidade, validade) {
+    constructor(id, nome, quantidade, validade) {
+        this.id = id;
         this.produto = nome;
         this.quantidade = quantidade;
         this.validade = validade;
@@ -21,9 +22,8 @@ class Bd {
 
     gravar(produto) {
         let id = this.getProximoId();
+        produto.id = id;
         localStorage.setItem(id, JSON.stringify(produto));
-
-        // Atualiza o ID
         localStorage.setItem('id', id);
     }
 
@@ -40,33 +40,41 @@ class Bd {
 
         return produtos;
     }
+
+    remover(id) {
+        localStorage.removeItem(id);
+    }
 }
 
 let bd = new Bd();
 
 function adicionarEstoque() {
-    const nome = document.getElementById("produto").value;
+    const nome = document.getElementById("produto").value.trim();
     const quantidade = document.getElementById("quantidade").value;
     const validade = document.getElementById("validade").value;
 
-    let produto = new Produto(nome, quantidade, validade);
+    if (nome === "" || quantidade === "" || validade === "") {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
 
+    let produto = new Produto(null, nome, quantidade, validade);
     bd.gravar(produto);
 
-    document.getElementById("produto").value = null
-    document.getElementById("quantidade").value = undefined
-    document.getElementById("validade").value = undefined
-    
+    document.getElementById("produto").value = "";
+    document.getElementById("quantidade").value = "";
+    document.getElementById("validade").value = "";
+
     carregarEstoque();
 }
 
 function carregarEstoque() {
     const tabela = document.querySelector("#tabelaEstoque tbody");
-    tabela.innerHTML = ""; // Limpa a tabela antes de carregar
+    tabela.innerHTML = "";
 
     let produtos = bd.recuperarTodosRegistros();
 
-    produtos.forEach((produto, index) => {
+    produtos.forEach((produto) => {
         let linha = tabela.insertRow();
 
         let cellId = linha.insertCell(0);
@@ -75,26 +83,27 @@ function carregarEstoque() {
         let cellValidade = linha.insertCell(3);
         let cellRemover = linha.insertCell(4);
 
-        cellId.innerText = index + 1; // ou outra lógica para o ID
+        cellId.innerText = produto.id;
         cellNome.innerText = produto.produto;
         cellQuantidade.innerText = produto.quantidade;
         cellValidade.innerText = produto.validade;
 
-        // Botão de remover
         let btnRemover = document.createElement("button");
         btnRemover.innerText = "Remover";
-        btnRemover.onclick = function() {
-            removerProduto(index + 1);
+        btnRemover.classList.add("btn-remover");
+        btnRemover.onclick = function () {
+            removerProduto(produto.id);
         };
+
         cellRemover.appendChild(btnRemover);
     });
 }
 
 function removerProduto(id) {
-    localStorage.removeItem(id);
+    bd.remover(id);
     carregarEstoque();
 }
 
-window.onload = function() {
+window.onload = function () {
     carregarEstoque();
 };
