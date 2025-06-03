@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador Do Estoque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <aside id="menuLateral">
+            <h1>Gerenciador de estoque</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="gerenciador.html">Estoque</a></li>
+                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Configurações</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main id="gerenciador">
+            <h2> Seu Estoque</h2>            
+            <div id="modal">
+                <a href="#meuModal" class="abrir-modal">+ Adiconar ao Estoque</a>
+
+                <div class="modal" id="meuModal">
+                <div class="modal-conteudo">
+                    <a href="#" class="fechar">&times;</a>
+                    <h3>O que você vai adicionar agora?</h3>
+                    <input type="text" id="produto" placeholder="Digite  o produto...">
+                    <h3>Qual a quantidade?</h3>
+                    <input type="number" id="quantidade" placeholder="Digite a quantidade..">
+                    <h3>Qual a data do vencimento?</h3>
+                    <input type="date" id="validade"><br><br><br>
+                    <a href="#" onclick="adicionarEstoque()" class="abrir-modal">+ Adiconar ao Estoque</a>
+                </div>
+                </div>
+            </div>
+            <!--
+            <div>
+                <ul>
+                    <li>
+                        <a class="gerenciadora" href="">Todas</a>
+                    </li>
+                    <li>
+                        <a class="gerenciadora" href="">Pendetes</a>
+                    </li>
+                    <li>
+                        <a class="gerenciadora" href="">Concluidas</a>
+                    </li>
+                </ul>
+            </div>-->
+            <table id="tabelaEstoque">
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Data de Vencimento</th>
+                <th>Remover</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dados serão inseridos aqui pelo JS -->
+            </tbody>
+            </table>
+
+        </main>
+    </div>
+    <script src="sricpt.js" ></script>
+</body>
+</html>
