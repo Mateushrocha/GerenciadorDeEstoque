@@ -7,67 +7,57 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <aside id="menuLateral">
-            <h1>Gerenciador de estoque</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Dashboard</a></li>
-                    <li><a href="gerenciador.html">Estoque</a></li>
-                    <li><a href="#">Categorias</a></li>
-                    <li><a href="#">Configurações</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <main id="gerenciador">
-            <h2> Seu Estoque</h2>            
-            <div id="modal">
-                <a href="#meuModal" class="abrir-modal">+ Adiconar ao Estoque</a>
 
-                <div class="modal" id="meuModal">
+    <aside id="menuLateral">
+        <h1>Gerenciador de Estoque</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="gerenciador.html">Estoque</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Configurações</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="gerenciador">
+        <h2>Seu Estoque</h2>
+
+        <div id="modal">
+            <a href="#meuModal" class="abrir-modal">+ Adicionar ao Estoque</a>
+
+            <div class="modal" id="meuModal">
                 <div class="modal-conteudo">
                     <a href="#" class="fechar">&times;</a>
                     <h3>O que você vai adicionar agora?</h3>
-                    <input type="text" id="produto" placeholder="Digite  o produto...">
+                    <input type="text" id="produto" placeholder="Digite o produto...">
                     <h3>Qual a quantidade?</h3>
-                    <input type="number" id="quantidade" placeholder="Digite a quantidade..">
+                    <input type="number" id="quantidade" placeholder="Digite a quantidade...">
                     <h3>Qual a data do vencimento?</h3>
-                    <input type="date" id="validade"><br><br><br>
-                    <a href="#" onclick="adicionarEstoque()" class="abrir-modal">+ Adiconar ao Estoque</a>
-                </div>
+                    <input type="date" id="validade">
+                    <br><br>
+                    <a href="#" onclick="adicionarEstoque()" class="abrir-modal">+ Adicionar ao Estoque</a>
                 </div>
             </div>
-            <!--
-            <div>
-                <ul>
-                    <li>
-                        <a class="gerenciadora" href="">Todas</a>
-                    </li>
-                    <li>
-                        <a class="gerenciadora" href="">Pendetes</a>
-                    </li>
-                    <li>
-                        <a class="gerenciadora" href="">Concluidas</a>
-                    </li>
-                </ul>
-            </div>-->
-            <table id="tabelaEstoque">
+        </div>
+
+        <table id="tabelaEstoque">
             <thead>
                 <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Quantidade</th>
-                <th>Data de Vencimento</th>
-                <th>Remover</th>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Quantidade</th>
+                    <th>Data de Vencimento</th>
+                    <th>Remover</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Dados serão inseridos aqui pelo JS -->
+                <!-- Dados JS -->
             </tbody>
-            </table>
+        </table>
+    </main>
 
-        </main>
-    </div>
-    <script src="sricpt.js" ></script>
+    <script src="sricpt.js"></script>
 </body>
 </html>

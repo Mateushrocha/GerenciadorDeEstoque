@@ -1,24 +1,26 @@
 /* Reset básico */
-body {
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
 
-.container {
-    display: flex;
-    height: 100vh;
-}
-a{
+a {
     text-decoration: none;
 }
 
-/* Menu lateral  */
+/* Menu lateral fixo */
 #menuLateral {
-    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
     background-color: #1F2937;
     color: white;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 #menuLateral h1 {
@@ -37,7 +39,6 @@ a{
 
 #menuLateral a {
     color: white;
-    text-decoration: none;
 }
 
 #menuLateral a:hover {
@@ -45,125 +46,160 @@ a{
 }
 
 /* Conteúdo principal */
-#conteudoPrincipal {
-    width: 80%;
+main {
+    margin-left: 250px; /* espaço para o menu fixo */
     padding: 40px;
-    background-color: #f3f4f6; /* cinza claro */
+    background-color: #f3f4f6;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
-#conteudoPrincipal h2 {
-    margin-top: 0;
+/* Hero Section */
+.hero {
+    background-color: #1F2937;
+    color: white;
+    padding: 50px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
 }
 
-/* Gerenciador de tarefas */
-
-#gerenciador{
-    padding-left: 10px;
+.hero .highlight {
+    color: #2563EB;
 }
 
-#gerenciador h1{
+.cta-button {
+    background-color: #2563EB;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #1E40AF;
+}
+
+/* Seção de benefícios */
+.divNossoSistema {
+    background-color: #1F2937;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.nossoSistema {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.nossoSistema div {
+    background-color: aliceblue;
+    color: #1F2937;
+    padding: 15px;
+    border-radius: 8px;
+    flex: 1 1 200px;
+}
+
+/* Seção de recursos */
+.features {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features li {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+/* Call to Action */
+.call-to-action {
+    background-color: #1F2937;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+/* Gerenciador */
+#gerenciador h2 {
     font-size: 2rem;
-    color: #1F2937; /* mesmo tom do menu, para consistência */
+    color: #1F2937;
     margin-bottom: 20px;
 }
 
-#gerenciador button{
-    background-color: #2563EB; /* azul forte (Tailwind blue-600) */
-    color: white;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-#gerenciador ul{
-    display: flex;
-}
-#gerenciador li{
-    list-style: none;
-}
-#gerenciador li :hover{
-    color: gray;
-}
-.gerenciadora{
-    text-decoration: none;
-    color: black;
-    margin: 15px;
-}
-
-/* css do modal */
-
-/* Estilo do botão */
-
+/* Botão modal */
 .abrir-modal {
-  background-color: #2563EB; /* azul forte (Tailwind blue-600) */
+    background-color: #2563EB;
     color: white;
     padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     text-decoration: none;
 }
 
-/* Fundo do modal (overlay) */
+/* Modal */
 .modal {
-  display: none;              
-  position: fixed;
-  z-index: 1;                 
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;              
-  background-color: rgba(0,0,0,0.5); /* Fundo escuro transparente */
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
 }
 
-/* Conteúdo do modal */
 .modal-conteudo {
-  background-color: #fff;
-  margin: 15% auto;            /* Centraliza na tela */
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 400px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  position: relative;
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
 }
 
-/* Botão de fechar */
 .fechar {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.modal {
-  display: none;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .modal:target {
-  display: block;
+    display: block;
 }
 
-/* css da tabela */
-
+/* Tabela */
 #tabelaEstoque {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
 #tabelaEstoque th, #tabelaEstoque td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: left;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
 }
 
 #tabelaEstoque th {
-  background-color: #f4f4f4;
+    background-color: #f4f4f4;
 }
